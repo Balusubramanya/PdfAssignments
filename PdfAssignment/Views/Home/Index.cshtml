@@ -1,0 +1,47 @@
+﻿@model PdfAssignment.Models.DataS
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div>
+    <strong>The below text are extracted from the PDF given.</strong>
+</div>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.files, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.files, "", new { @type = "file" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Upload" class="btn btn-primary" />
+        </div>
+    </div>
+}
+@if (ViewBag.FileStatus != "" && ViewBag.FileStatus != null)
+{
+    <div class="form-group" style="color:red">
+        @ViewBag.FileStatus
+    </div>
+}
+@if (Model != null)
+{
+    <div class="form-group">
+        <div class="col-md-4" style="color:red">
+            @Model.MyProperty1
+        </div>
+        <div class="col-md-4" style="color:red">
+            @Model.MyProperty2
+        </div>
+        <div class="col-md-4" style="color:red">
+            @Model.MyProperty3
+        </div>
+    </div>
+}
